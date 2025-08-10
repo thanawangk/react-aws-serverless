@@ -22,7 +22,7 @@
       "function": {
         "serverlesswebapp6afdc28bPostConfirmation": {
           "deploymentBucketName": "amplify-serverlesswebapp-dev-24c5a-deployment",
-          "s3Key": "amplify-builds/serverlesswebapp6afdc28bPostConfirmation-397a4c334f46316e4a47-build.zip"
+          "s3Key": "amplify-builds/serverlesswebapp6afdc28bPostConfirmation-6143746d7a3552534d76-build.zip"
         }
       }
     }
