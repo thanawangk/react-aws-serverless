@@ -1,1 +1,8 @@
-{}
+{
+  "storage": {
+    "profiles": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
+}
