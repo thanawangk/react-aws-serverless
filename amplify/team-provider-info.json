@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-serverlesswebapp-dev-24c5a-unauthRole",
       "StackName": "amplify-serverlesswebapp-dev-24c5a",
       "StackId": "arn:aws:cloudformation:ap-southeast-1:687980257981:stack/amplify-serverlesswebapp-dev-24c5a/a75e3ee0-75b4-11f0-a93a-0627f0d40799",
-      "AmplifyAppId": "d2cz5o2rxak9d6"
+      "AmplifyAppId": "d2cz5o2rxak9d6",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-serverlesswebapp-dev-24c5a-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
@@ -19,7 +20,10 @@
         "profiles": {}
       },
       "function": {
-        "serverlesswebapp6afdc28bPostConfirmation": {}
+        "serverlesswebapp6afdc28bPostConfirmation": {
+          "deploymentBucketName": "amplify-serverlesswebapp-dev-24c5a-deployment",
+          "s3Key": "amplify-builds/serverlesswebapp6afdc28bPostConfirmation-397a4c334f46316e4a47-build.zip"
+        }
       }
     }
   }

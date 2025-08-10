@@ -12,5 +12,15 @@
   "triggerTemplate": "PostConfirmation.json.ejs",
   "triggerEventPath": "PostConfirmation.event.json",
   "roleName": "serverlesswebapp6afdc28bPostConfirmation",
-  "skipEdit": true
+  "skipEdit": true,
+  "permissions": {
+    "storage": {
+      "profiles": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  }
 }

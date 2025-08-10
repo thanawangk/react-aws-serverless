@@ -40,8 +40,37 @@
   "function": {
     "serverlesswebapp6afdc28bPostConfirmation": {
       "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "profiles"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_serverlesswebapp6afdc28bPostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "serverlesswebapp6afdc28bPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_serverlesswebapp6afdc28bPostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "serverlesswebapp6afdc28bPostConfirmation"
+        }
+      ]
     }
   },
   "storage": {
