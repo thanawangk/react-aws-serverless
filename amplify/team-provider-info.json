@@ -17,6 +17,9 @@
       },
       "storage": {
         "profiles": {}
+      },
+      "function": {
+        "serverlesswebapp6afdc28bPostConfirmation": {}
       }
     }
   }

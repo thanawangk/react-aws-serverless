@@ -1,0 +1,16 @@
+{
+  "trigger": true,
+  "modules": [
+    "custom"
+  ],
+  "parentResource": "serverlesswebapp6afdc28b",
+  "functionName": "serverlesswebapp6afdc28bPostConfirmation",
+  "resourceName": "serverlesswebapp6afdc28bPostConfirmation",
+  "parentStack": "auth",
+  "triggerEnvs": "[]",
+  "triggerDir": "C:\\snapshot\\amplify-cli\\build\\node_modules\\@aws-amplify\\amplify-category-auth\\provider-utils\\awscloudformation\\triggers\\PostConfirmation",
+  "triggerTemplate": "PostConfirmation.json.ejs",
+  "triggerEventPath": "PostConfirmation.event.json",
+  "roleName": "serverlesswebapp6afdc28bPostConfirmation",
+  "skipEdit": true
+}
