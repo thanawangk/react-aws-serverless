@@ -1,13 +1,7 @@
-// amplify/backend/function/<PostConfirmation>/src/custom.js
 const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
 const { DynamoDBDocumentClient, PutCommand } = require("@aws-sdk/lib-dynamodb");
 
-// Prefer the profiles table; keep fallbacks to avoid future renames
-const TABLE =
-  process.env.STORAGE_PROFILES_NAME ||
-  process.env.STORAGE_USERS_NAME || // old name fallback
-  process.env.PROFILES_TABLE || // manual override (optional)
-  process.env.USERS_TABLE; // manual override (optional)
+const TABLE = process.env.STORAGE_PROFILES_NAME || process.env.PROFILES_TABLE;
 
 const doc = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 
@@ -19,7 +13,7 @@ async function writeUserProfile(event) {
       "No table env found. Have you granted storage access to this function?"
     );
     throw new Error(
-      "USERS_TABLE env missing (looking for STORAGE_PROFILES_NAME)"
+      "PROFILES_TABLE env missing (looking for STORAGE_PROFILES_NAME)"
     );
   }
 
