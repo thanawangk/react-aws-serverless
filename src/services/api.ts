@@ -17,14 +17,11 @@ export async function authed<T>(path: string, init?: RequestInit): Promise<T> {
     headers: {
       "Content-Type": "application/json",
       Authorization: token, // REST authorizer
-      // If you used HTTP API JWT Authorizer, use:
-      // Authorization: `Bearer ${token}`,
       ...(init?.headers || {}),
     },
   });
 
   if (!res.ok) throw new Error(await res.text());
+  // console.log("API response:", res);
   return res.status === 204 ? (undefined as T) : await res.json();
 }
-
-export const getUsers = () => authed<any[]>("/profile");
