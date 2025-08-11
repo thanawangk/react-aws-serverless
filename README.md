@@ -41,20 +41,20 @@ Build a simple serverless web application using AWS services that allows user re
 ## How to Deploy the App
 
 
-1. **Clone or download this repository**:
+#### 1. Clone or download this repository:
 
 ```bash
 git clone <repo-url>
 cd <repo-folder>
 ```
 
-2. **Install dependencies**:
+#### 2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-3. **Backend auth (Cognito) with Amplify**
+#### 3. Backend auth (Cognito) with Amplify
 ```bash
 amplify init
 amplify add auth 
@@ -64,7 +64,7 @@ amplify push
 
 > After `push`, Amplify generates `src/aws-exports.js` (used by the frontend).
 
-4. **Profiles table (DynamoDB) via Amplify Storage**
+#### 4. Profiles table (DynamoDB) via Amplify Storage
 ```bash
 amplify add storage
 # Select: NoSQL Database
@@ -73,7 +73,7 @@ amplify add storage
 amplify push
 ```
 
-5. **PostConfirmation trigger to create profile row**
+#### 5. PostConfirmation trigger to create profile row
 ```bash
 amplify update auth 
 # Add User Pool Triggers -> Post Confirmation -> create function
@@ -86,7 +86,7 @@ Push the changes:
 amplify push
 ```
 
-6. **Profile API (API Gateway + Lambda)**
+#### 6. Profile API (API Gateway + Lambda)
 
 Create a Lambda for `/profile` (GET, PUT) and deploy it behind API Gateway with a **Cognito authorizer** attached.
 
@@ -97,7 +97,7 @@ Create a Lambda for `/profile` (GET, PUT) and deploy it behind API Gateway with 
 - Attach the authorizer to `/profile` to secure the endpoints.
 - Deploy the API and note the stage URL.
 
-7. **Frontend (React + Vite + TS)**
+#### 7. Frontend (React + Vite + TS)
 
 **Env vars (locally as `.env`):**
 ```
