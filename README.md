@@ -110,7 +110,6 @@ VITE_API_URL=https://xxxx.execute-api.<region>.amazonaws.com/prod
 
 Run tests:
 ```bash
-npm install
 npm test
 ```
 
@@ -119,6 +118,8 @@ npm test
 **Sample unit test results**
 
 ```
+> jest
+
  PASS  src/tests/custom.test.js
   PostConfirmation Lambda
     √ should skip if triggerSource is not PostConfirmation_ConfirmSignUp (3 ms)                                                                                       
@@ -130,6 +131,6 @@ npm test
 Test Suites: 1 passed, 1 total
 Tests:       5 passed, 5 total
 Snapshots:   0 total
-Time:        0.92 s, estimated 2 s
+Time:        1.255 s
 Ran all test suites.
 ```
