@@ -15,7 +15,7 @@ const loadHandlerFresh = () => {
   return mod.handler; // writeUserProfile
 };
 
-describe("writeUserProfile Lambda", () => {
+describe("PostConfirmation Lambda", () => {
   beforeEach(() => {
     ddbMock.reset();
   });

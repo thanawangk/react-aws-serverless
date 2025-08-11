@@ -105,6 +105,7 @@ function App() {
           style={{
             borderRadius: "4px",
             padding: "8px 24px 40px 24px",
+            margin: 0,
             textAlign: "center",
             minWidth: isDesktop ? "480px" : "auto",
           }}
