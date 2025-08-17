@@ -11,3 +11,7 @@ body {
   place-items: center;
   background-image: linear-gradient(#ffeeb7, #ffe079, #ffdd62);
 }
+
+ul {
+  padding-left: 0px;
+}

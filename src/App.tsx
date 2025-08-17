@@ -3,6 +3,8 @@ import "./App.css";
 import { getProfile, updateProfile } from "./services/api";
 import { signOut } from "aws-amplify/auth";
 import { Button, Card, Loader } from "@aws-amplify/ui-react";
+import type { Task } from "./types/task.type";
+import { createTask, deleteTask, getTasks, updateTask } from "./services/task";
 
 export type Profile = {
   userId?: string;
@@ -19,8 +21,13 @@ function App() {
   const [saving, setSaving] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [name, setName] = useState("");
+  const load = async () => setTasks(await getTasks());
+
   useEffect(() => {
     onGet();
+    load().catch(console.error);
   }, []);
 
   // Set form with profile data
@@ -83,6 +90,23 @@ function App() {
     }
   }
 
+  const add = async () => {
+    if (!name.trim()) return;
+    await createTask({ name: name.trim(), completed: false });
+    setName("");
+    await load();
+  };
+
+  const toggle = async (t: Task) => {
+    await updateTask({ ...t, completed: !t.completed });
+    await load();
+  };
+
+  const remove = async (id: string) => {
+    await deleteTask(id);
+    await load();
+  };
+
   function useIsDesktop(breakpoint = 768) {
     const [isDesktop, setIsDesktop] = useState(window.innerWidth >= breakpoint);
     useEffect(() => {
@@ -111,7 +135,7 @@ function App() {
           }}
         >
           <div className="header">
-            <h3>Hi, {profile.name}</h3>
+            <h2>Hi, {profile.name}</h2>
             <Button
               size="small"
               variation="primary"
@@ -159,13 +183,66 @@ function App() {
 
             <Button
               size="small"
+              variation="link"
               onClick={onReset}
               disabled={saving || !dirty}
-              variation="link"
               style={{ width: "100px" }}
             >
               Reset
             </Button>
+          </div>
+
+          <div>
+            <div className="header" style={{ marginBottom: 30 }}>
+              <h2>Tasks</h2>
+            </div>
+
+            <div style={{ display: "flex", gap: 8 }}>
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="New task name"
+                className="input-task"
+              />
+              <Button variation="primary" onClick={add}>
+                Add
+              </Button>
+            </div>
+            <ul>
+              {tasks.map((t) => (
+                <li
+                  key={t.id}
+                  style={{
+                    display: "flex",
+                    gap: 8,
+                    alignItems: "center",
+                    padding: "8px 0",
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={t.completed}
+                    onChange={() => toggle(t)}
+                  />
+                  <span
+                    style={{
+                      textDecoration: t.completed ? "line-through" : "none",
+                    }}
+                  >
+                    {t.name}
+                  </span>
+                  <Button
+                    size="small"
+                    variation="link"
+                    colorTheme="error"
+                    style={{ marginLeft: "auto" }}
+                    onClick={() => remove(t.id)}
+                  >
+                    Delete
+                  </Button>
+                </li>
+              ))}
+            </ul>
           </div>
         </Card>
       )}

@@ -2,13 +2,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 4px;
   border-bottom: 1px solid #eff0f0;
   margin-bottom: 16px;
   gap: 16px;
 }
 
-.header h3 {
+.header h2 {
   width: auto;
   max-width: 60%;
   white-space: nowrap;
@@ -51,6 +50,18 @@
   /* display: flex; */
   /* gap: 16px; */
   margin-top: 32px;
+}
+
+.input-task {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #dcdee0;
+  border-radius: 6px;
+}
+
+.input-task:focus {
+  border: 1px solid #000;
+  outline: 2px solid #ffc600;
 }
 
 [data-amplify-authenticator] {

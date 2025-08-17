@@ -10,7 +10,7 @@ async function authHeader() {
   return { Authorization: idToken };
 }
 
-async function req<T>(path: string, init?: RequestInit): Promise<T> {
+async function reqAuth<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE}${path}`, {
     ...(init || {}),
     headers: {
@@ -23,10 +23,10 @@ async function req<T>(path: string, init?: RequestInit): Promise<T> {
   return (await res.json()) as T;
 }
 
-export const getProfile = () => req<Profile>("/profile");
+export const getProfile = () => reqAuth<Profile>("/profile");
 
 export const updateProfile = (data: Partial<Profile>) =>
-  req<{ message: string; profile: Profile }>("/profile", {
+  reqAuth<{ message: string; profile: Profile }>("/profile", {
     method: "PUT",
     body: JSON.stringify(data),
   });
